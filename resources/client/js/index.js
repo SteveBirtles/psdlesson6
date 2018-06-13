@@ -1,3 +1,5 @@
+"use strict";
+
 function renderMessage(message) {
     return `<div class="border border-primary p-2 m-2">` +
         `<div>` +
