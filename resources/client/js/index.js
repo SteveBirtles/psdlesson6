@@ -13,7 +13,7 @@ function loadMessages() {
     $.ajax({
         url: '/message/list',
         type: 'GET',
-        success: function (messageList) {
+        success: messageList => {
             for (let message of messageList) {
                 messagesHTML += renderMessage(message);
             }
@@ -22,14 +22,14 @@ function loadMessages() {
     });
 }
 
-
 function resetForm() {
-    $('#messageForm').submit(function(event) {
+    const form = $('#messageForm');
+    form.submit(event => {
         event.preventDefault();
         $.ajax({
             url: '/message/new',
             type: 'POST',
-            data: $(this).serialize(),
+            data: form.serialize(),
             success: loadMessages
         });
     });
